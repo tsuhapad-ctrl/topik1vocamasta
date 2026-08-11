@@ -125,5 +125,19 @@ window.addEventListener('popstate',()=>{
 const initial = location.hash.match(/^#volume-([1-4])$/);
 if(initial) openVolume(initial[1],false);
 </script>
+  <script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then(() => {
+          console.log("Service Worker berhasil didaftarkan");
+        })
+        .catch((error) => {
+          console.log("Service Worker gagal:", error);
+        });
+    });
+  }
+  </script>
 </body>
 </html>
